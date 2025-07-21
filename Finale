@@ -1,0 +1,121 @@
+<html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>EMMA - Linktree Style Landing Page</title>  <!-- Tailwind CSS -->  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">  <!-- GSAP for animations -->  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>  <!-- Phosphor Icons -->  <script src="https://unpkg.com/@phosphor-icons/web"></script>  <!-- Lottie Player -->  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>  <!-- tsParticles -->  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>  <style>
+    body {
+      transition: all 0.3s ease-in-out;
+      overflow-x: hidden;
+    }
+    a:hover {
+      transform: scale(1.05);
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+    }
+    #tsparticles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      top: 0;
+      left: 0;
+    }
+    .floating-animation {
+      position: fixed;
+      width: 150px;
+      z-index: -1;
+      opacity: 0.8;
+    }
+    .floating-image {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      z-index: -1;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+  </style></head><body class="bg-green-50 font-sans">  <!-- tsParticles Background -->  <div id="tsparticles"></div>  <!-- Floating Robot-Themed Lottie Animations (Clean versions) --><lottie-player src="https://assets9.lottiefiles.com/packages/lf20_UJNc2t.json" background="transparent" speed="1" class="floating-animation" style="top: 10%; left: 5%;" loop autoplay aria-hidden="true"></lottie-player> <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_M9p23l.json" background="transparent" speed="1" class="floating-animation" style="top: 40%; left: 80%;" loop autoplay aria-hidden="true"></lottie-player> <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_pprxh53t.json" background="transparent" speed="1" class="floating-animation" style="top: 70%; left: 20%;" loop autoplay aria-hidden="true"></lottie-player>
+
+  <!-- Floating Images with Your Uploaded Photo -->  <img src="https://i.postimg.cc/xCt9TV81/photo7093506086263776411.jpg" alt="Emma Avatar" class="floating-image" style="top: 20%; left: 10%;">
+  <img src="https://i.postimg.cc/xCt9TV81/photo7093506086263776411.jpg" alt="Emma Avatar" class="floating-image" style="top: 60%; left: 70%;">
+  <img src="https://i.postimg.cc/xCt9TV81/photo7093506086263776411.jpg" alt="Emma Avatar" class="floating-image" style="top: 80%; left: 30%;">  <header class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-green-600">EMMA</h1>
+    <nav>
+      <a href="mailto:pascalmatthew4@gmail.com" class="text-green-600 hover:underline">Contact</a>
+    </nav>
+  </header>  <section class="text-center py-20">
+    <h2 class="text-4xl font-bold mb-4 text-green-700">Welcome to my Landing Page, I'm Emma</h2>
+    <p class="text-gray-700 text-lg max-w-xl mx-auto mb-8">
+      I offer innovative solutions designed for your success. Reach out and let’s connect!
+    </p>
+    <div class="flex flex-col space-y-4 items-center">
+      <a href="https://x.com/emma1_web3" target="_blank" class="flex items-center bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition w-60 justify-center">
+        <i class="ph ph-twitter-logo text-xl mr-2"></i> Follow me on Twitter
+      </a>
+      <a href="https://t.me/Emmawb3" target="_blank" class="flex items-center bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition w-60 justify-center">
+        <i class="ph ph-telegram-logo text-xl mr-2"></i> Join me on Telegram
+      </a>
+      <a href="https://discordapp.com/users/emmawb3" target="_blank" class="flex items-center bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition w-60 justify-center">
+        <i class="ph ph-discord-logo text-xl mr-2"></i> Connect on Discord
+      </a>
+    </div>
+  </section>  <section id="form" class="bg-white p-8 max-w-md mx-auto rounded-lg shadow-lg">
+    <h3 class="text-2xl font-semibold mb-4 text-center text-green-700">Get in Touch</h3>
+  </section>  <footer class="text-center text-gray-600 py-4">
+    &copy; 2025 EMMA. All rights reserved.
+  </footer>  <script>
+    // Handle form submission animation (if needed)
+    function handleSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      gsap.to(form, { duration: 0.5, scale: 0.95, yoyo: true, repeat: 1, ease: "power1.inOut" });
+      document.getElementById('successMsg').classList.remove('hidden');
+      form.reset();
+    }
+
+    // Animate floating images
+    gsap.utils.toArray(".floating-image").forEach((el) => {
+      gsap.to(el, {
+        y: "-=200px",
+        duration: 30,
+        repeat: -1,
+        ease: "linear",
+        delay: Math.random() * 5
+      });
+    });
+
+    // Animate Lottie elements
+    gsap.utils.toArray(".floating-animation").forEach((el) => {
+      gsap.to(el, {
+        y: "-=150px",
+        duration: 40,
+        repeat: -1,
+        ease: "linear",
+        delay: Math.random() * 5
+      });
+    });
+
+    // Initialize tsParticles
+    tsParticles.load("tsparticles", {
+      particles: {
+        color: { value: "#10b981" },
+        links: { enable: true, color: "#10b981" },
+        move: { enable: true, speed: 1 },
+        size: { value: 3 },
+        number: { value: 50 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        }
+      }
+    });
+  </script></body>
+</html>
